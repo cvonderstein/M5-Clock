@@ -160,8 +160,16 @@ void render_time() {
     if (o > 4)
       o = 4;
 
+    // If current_date.month is 0 (which is the case when the correct time is
+    // not yet set), this leads to an out of bounds on the month[] lookup ->
+    // catch this case and use 1 instead
+    int8_t current_month = current_date.mon;
+    if (current_month <= 0) {
+      current_month = 1;
+    }
+
     sprintf(dateString, "  %s %2d%s %s %4d  ", day, current_date.day,
-            ord[o - 1], month[current_date.mon - 1], current_date.year);
+            ord[o - 1], month[current_month - 1], current_date.year);
     render_text(110, 310, 48, dateString);
     Serial.printf("Date rendered\n");
   }
