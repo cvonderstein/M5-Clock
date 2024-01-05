@@ -57,7 +57,7 @@ void load_persistent_data(void) {
 }
 
 void setup() {
-  M5.begin(false, false, true, true, false);
+  M5.begin(false, false, true, true, true);
 
   // Serial is initialised by M5.begin to 115200 baud
   Serial.print("\nM5-Clock started.\n");
