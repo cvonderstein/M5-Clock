@@ -27,3 +27,16 @@ Have fun !
 5. Copy the font file to the SPIFFS using [this](https://github.com/me-no-dev/arduino-esp32fs-plugin) plugin (everything is explained there, note that at least until now you need Arduino IDE 1.x for this)
 6. Change Wifi SSID, Password and the Weatherapi.com API key at the beginning of the code to your needs
 7. Compile and uploads
+
+## Known issues
+
+### Initially wrong date
+
+I'm not sure why, but initially after the Clock updated, the right time was shown but with an incorrect date (like not something zero, but some random date).
+Also a reset (using the reset button on the back) didn't fix this.
+Since this resolved automatically after some time (not sure how long, I was away and when I came back after some hours it showed the correct date), I didn't spend any time into debugging this, since for me there was nothing start at.
+This just as an information, so don't need to be as confused as I was.
+
+### Dates with 0 show "Saturday" as ordinal
+
+This is probably some OutOfBounds thing caused by the calculation of the ordinals, I have to look into it.
